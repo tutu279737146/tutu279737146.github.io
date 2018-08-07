@@ -156,6 +156,61 @@
       <div class="body-wrap">
         
   
+    <article id="post-Cocoapods更新自己的SDK" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/16/Cocoapods更新自己的SDK/">Cocoapods更新自己的SDK</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>上一篇文章中介绍了怎么通过Cocoapods制作自己的SDK,这篇记录下怎么更新自己的SDK</strong></p>
+<h4 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h4><p><strong>你的Github已经有了自己的项目,并且trunk至Cocoapods;</strong></p>
+<h4 id="1-更新本地的代码"><a href="#1-更新本地的代码" class="headerlink" title="1.更新本地的代码"></a>1.更新本地的代码</h4><p><strong>打开自己的SDK工程,将需要改进的地方进行修改;这里我是更新了一下接口的参数类型;</strong><br><img src="http://oxn0lcico.bkt.clouddn.com/g1.png" alt=""></p>
+<h4 id="2-通过终端命令将改变上传至Github"><a href="#2-通过终端命令将改变上传至Github" class="headerlink" title="2.通过终端命令将改变上传至Github;"></a>2.通过终端命令将改变上传至Github;</h4><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">git <span class="keyword">add</span><span class="bash"> .</div><div class="line"></span>git commit -m <span class="string">'更新SDKv0.1.3'</span></div><div class="line">git tag -a <span class="string">'v0.1.3'</span> -m <span class="string">'更新SDKv0.1.3'</span></div><div class="line">git push</div></pre></td></tr></table></figure>
+        <p class="article-more-link">
+          <a class="article-more-a"  href="/2017/05/16/Cocoapods更新自己的SDK/#more">more >></a>
+        </p>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2017/05/16/Cocoapods更新自己的SDK/" class="archive-article-date">
+  	<time datetime="2017-05-16T07:10:20.000Z" itemprop="datePublished"><i class="icon-clock"></i>2017-05-16</time>
+</a>
+      
+      
+	<div class="article-category tagcloud">
+	<i class="icon-price-tags"></i>
+	<a class="article-category-link" href="/categories/OC/">OC</a>
+	</div>
+
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-制作自己的CocoaPods框架" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -619,58 +674,6 @@
       
       <a href="/2016/12/27/OC中字典用法总结/" class="archive-article-date">
   	<time datetime="2016-12-27T05:26:59.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-12-27</time>
-</a>
-      
-      
-	<div class="article-category tagcloud">
-	<i class="icon-price-tags"></i>
-	<a class="article-category-link" href="/categories/OC/">OC</a>
-	</div>
-
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-OC中数组总结" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/27/OC中数组总结/">OC中数组总结</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="不可变数组-NSArray"><a href="#不可变数组-NSArray" class="headerlink" title="不可变数组(NSArray)"></a>不可变数组(NSArray)</h3><h4 id="创建及初始化"><a href="#创建及初始化" class="headerlink" title="创建及初始化"></a>创建及初始化</h4><figure class="highlight avrasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">array:</span>方法：创建数组</div><div class="line"><span class="symbol">arrayWithArray:</span>方法：通过一个数组创建另一个数组</div><div class="line"><span class="symbol">arrayWithContentsOfFile:</span>方法：创建数组将内容设置为指定文件内容</div><div class="line"><span class="symbol">arrayWithContentsOfURL:</span>方法：创建数组将内容设置为url指定内容</div><div class="line"><span class="symbol">arrayWithObject:</span>方法：创建具有一个元素的数组</div><div class="line"><span class="symbol">arrayWithObjects:</span>方法：创建具有多个元素的数组</div><div class="line"><span class="symbol">init:</span>方法：初始化数组</div><div class="line"><span class="symbol">initWithArray:</span>方法：用数组初始化数组</div><div class="line"><span class="symbol">initWithContentsOfFile:</span>方法：初始化数组将内容设置为指定文件内容</div><div class="line"><span class="symbol">initWithContentsOfURL:</span>方法：初始化数组将内容设置为url指定内容</div><div class="line"><span class="symbol">initWithObjects:</span>方法：初始化具有多个元素的数组</div></pre></td></tr></table></figure>
-        <p class="article-more-link">
-          <a class="article-more-a"  href="/2016/12/27/OC中数组总结/#more">more >></a>
-        </p>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2016/12/27/OC中数组总结/" class="archive-article-date">
-  	<time datetime="2016-12-27T05:21:25.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-12-27</time>
 </a>
       
       

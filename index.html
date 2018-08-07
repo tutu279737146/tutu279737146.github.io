@@ -213,6 +213,71 @@
 
 
   
+    <article id="post-深入探讨Block循环引用" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/14/深入探讨Block循环引用/">深入探讨Block循环引用</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="循环引用由来"><a href="#循环引用由来" class="headerlink" title="循环引用由来"></a>循环引用由来</h3><p>俩个对象相互强引用,俩个对象的<code>retainCount</code>一直无法为0,内存无法释放造成内存泄漏;<br>多个对象同理;</p>
+<h3 id="一-strong-weak实现原理"><a href="#一-strong-weak实现原理" class="headerlink" title="一. __strong __weak实现原理"></a>一. <code>__strong</code> <code>__weak</code>实现原理</h3><blockquote>
+<p>所有权修饰:符:<code>__strong</code>,<code>__weak</code>,<code>__unsafe_unretained</code>,<code>__autoreleasing</code>;<br>所有权修饰符默认不写是<code>__strong</code></p>
+</blockquote>
+<h5 id="strong示例"><a href="#strong示例" class="headerlink" title="__strong示例"></a><code>__strong</code>示例</h5><blockquote>
+<p>对象持有自己<br>生成的时候用<code>alloc/new/copy/mutableCopy</code></p>
+</blockquote>
+<p>声明一个<code>__strong</code>对象</p>
+<figure class="highlight clojure"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">id __strong obj = [[NSObject alloc] init]<span class="comment">;</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>LLVM编译器转换为</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">id __attribute__((<span class="name">objc_ownership</span>(<span class="name">strong</span>))) obj = ((<span class="name">NSObject</span> *(*)(<span class="name">id</span>, SEL))(<span class="name">void</span> *)objc_msgSend)((id)((NSObject *(<span class="name">*</span>)(<span class="name">id</span>, SEL))(<span class="name">void</span> *)objc_msgSend)((id)objc_getClass("NSObject"), sel_registerName("alloc")), sel_registerName("init"));</div></pre></td></tr></table></figure>
+<p>简单的调用</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">id obj = objc_msgSend(<span class="name">NSObject</span>, @selector(<span class="name">alloc</span>))<span class="comment">;</span></div><div class="line">objc_msgSend(<span class="name">obj</span>,selector(<span class="name">init</span>))<span class="comment">;</span></div><div class="line">objc_release(<span class="name">obj</span>)<span class="comment">;</span></div></pre></td></tr></table></figure>
+<p>由于在<code>ARC</code>下,会自动插入<code>release</code>代码,所以不难理解<br>
+        <p class="article-more-link">
+          <a class="article-more-a"  href="/2018/07/14/深入探讨Block循环引用/#more">more >></a>
+        </p>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2018/07/14/深入探讨Block循环引用/" class="archive-article-date">
+  	<time datetime="2018-07-13T16:18:02.000Z" itemprop="datePublished"><i class="icon-clock"></i>2018-07-14</time>
+</a>
+      
+      
+	<div class="article-category tagcloud">
+	<i class="icon-price-tags"></i>
+	<a class="article-category-link" href="/categories/OC/">OC</a>
+	</div>
+
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-盒子模型" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -739,75 +804,6 @@
       
       <a href="/2017/12/20/终端提交代码到github/" class="archive-article-date">
   	<time datetime="2017-12-20T05:45:13.000Z" itemprop="datePublished"><i class="icon-clock"></i>2017-12-20</time>
-</a>
-      
-      
-	<div class="article-category tagcloud">
-	<i class="icon-price-tags"></i>
-	<a class="article-category-link" href="/categories/OC/">OC</a>
-	</div>
-
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Xcode-9拖入框架报错问题" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/25/Xcode-9拖入框架报错问题/">Xcode 9拖入框架报错问题</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ul>
-<li><p><strong>问题描述</strong></p>
-<p>  拖入一张图片或者一个下载好的第三方框架文件到目录结构下,编译不报错,运行时会报错;</p>
-</li>
-<li><p><strong>问题原因</strong></p>
-<p>  可能是<code>Xcode 9</code>的一个bug,编译期间没有添加文件到<code>Compile Sources</code></p>
-</li>
-<li><p><strong>问题重现</strong></p>
-<ol>
-<li>拖入下载好的<code>Masonry</code>框架到项目中;</li>
-<li>导入头文件,使用;</li>
-<li>查看<code>TARGETS ~&gt; Build Phases ~&gt; Compile Sources</code>,发现没有自动添加到<code>Compile Sources</code>;</li>
-<li><code>Command+b</code>,编译成功(说明Xcode甚至没有检查对错);</li>
-<li><code>Command+r</code>,运行报错;</li>
-</ol>
-</li>
-</ul>
-<p><img src="http://oxn0lcico.bkt.clouddn.com/%E9%97%AE%E9%A2%98.gif" alt=""></p>
-        <p class="article-more-link">
-          <a class="article-more-a"  href="/2017/10/25/Xcode-9拖入框架报错问题/#more">more >></a>
-        </p>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2017/10/25/Xcode-9拖入框架报错问题/" class="archive-article-date">
-  	<time datetime="2017-10-25T07:01:53.000Z" itemprop="datePublished"><i class="icon-clock"></i>2017-10-25</time>
 </a>
       
       
