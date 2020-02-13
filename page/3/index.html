@@ -156,6 +156,62 @@
       <div class="body-wrap">
         
   
+    <article id="post-Swift3-0学习-可选项" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/06/05/Swift3-0学习-可选项/">Swift3.0学习--可选项</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="可选项"><a href="#可选项" class="headerlink" title="可选项"></a>可选项</h2><p><strong>可选项的意义:因为在Swift里面不允许对’String’,’Array’等类型的变量赋值为nil,所以要将一个对象赋值为nil的时候,就用到了可选项</strong></p>
+<ul>
+<li><strong>Optional,顾名思义,就是可选的意思,所以最初可选项的定义就是:</strong></li>
+</ul>
+<figure class="highlight fortran"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">let x: <span class="keyword">Optional</span> = <span class="number">10</span> //表示x要么是整数值,要么是nil;	<span class="keyword">Optional</span>是个枚举&#123;<span class="keyword">none</span>(没有值),some(某一类值)&#125;</div><div class="line">	</div><div class="line"><span class="built_in">print</span>(x) ---&gt; <span class="keyword">Optional</span>(<span class="number">10</span>) //打印的结果</div></pre></td></tr></table></figure>
+        <p class="article-more-link">
+          <a class="article-more-a"  href="/2017/06/05/Swift3-0学习-可选项/#more">more >></a>
+        </p>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2017/06/05/Swift3-0学习-可选项/" class="archive-article-date">
+  	<time datetime="2017-06-05T09:38:04.000Z" itemprop="datePublished"><i class="icon-clock"></i>2017-06-05</time>
+</a>
+      
+      
+	<div class="article-category tagcloud">
+	<i class="icon-price-tags"></i>
+	<a class="article-category-link" href="/categories/Swift/">Swift</a>
+	</div>
+
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-Cocoapods更新自己的SDK" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -646,61 +702,9 @@
 
 
   
-    <article id="post-OC中字典用法总结" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/27/OC中字典用法总结/">OC中字典用法总结</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="不可变字典对象-NSDictionary"><a href="#不可变字典对象-NSDictionary" class="headerlink" title="不可变字典对象(NSDictionary)"></a>不可变字典对象(NSDictionary)</h3><h5 id="创建及初始化"><a href="#创建及初始化" class="headerlink" title="创建及初始化"></a>创建及初始化</h5><figure class="highlight avrasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">dictionary:</span>方法：创建字典</div><div class="line"><span class="symbol">dictionaryWithContentsOfFile:</span>方法：将创建的字典内容设置为指定文件内容</div><div class="line"><span class="symbol">dictionaryWithContentsOfURL:</span>方法：将创建的字典内容设置为指定url内容</div><div class="line"><span class="symbol">dictionaryWithDictionary:</span>方法：用字典创建字典</div><div class="line"><span class="symbol">dictionaryWithObject:</span>方法：创建具有一个键-值的字典　</div><div class="line"><span class="symbol">dictionaryWithObjects:</span>方法：创建具有多个键-值的字典</div><div class="line"><span class="symbol">dictionaryWithObjectsAndKeys:</span>方法：创建具有多个键-值的字典</div><div class="line"><span class="symbol">init:</span>方法：初始化字典</div><div class="line"><span class="symbol">initWithContentsOfFile:</span>方法：将初始化的字典内容设置为指定文件内容</div><div class="line"><span class="symbol">initWithContentsOfURL:</span>方法：将初始化的字典内容设置为指定url内容</div><div class="line"><span class="symbol">initWithDictionary:</span>方法：用字典初始化字典</div><div class="line"><span class="symbol">initWithObjects:</span>方法：初始化具有多个键-值的字典</div><div class="line"><span class="symbol">initWithObjectsAndKeys:</span>方法：初始化具有多个键-值的字典</div></pre></td></tr></table></figure>
-        <p class="article-more-link">
-          <a class="article-more-a"  href="/2016/12/27/OC中字典用法总结/#more">more >></a>
-        </p>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2016/12/27/OC中字典用法总结/" class="archive-article-date">
-  	<time datetime="2016-12-27T05:26:59.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-12-27</time>
-</a>
-      
-      
-	<div class="article-category tagcloud">
-	<i class="icon-price-tags"></i>
-	<a class="article-category-link" href="/categories/OC/">OC</a>
-	</div>
-
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
     </nav>
   
 
@@ -710,7 +714,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2018 涂世展
+    		&copy; 2020 涂世展
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
