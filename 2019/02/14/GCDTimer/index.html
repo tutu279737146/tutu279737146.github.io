@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="TuShiZhan_Blog|涂世展博客">
 <meta property="og:description" content="NSTimer相关参数介绍
 1.interval: 时间间隔,单位秒,如果设置小于0,系统默认是0.12.target: 定时器的绑定对象,一般是当前控制器self3.selector: 需要执行的实例方法(减号方法)4.userInfo: 传递相关信息5.repeats: 是否循环6.block: 需要执行的代码块,等同于 selector方法7.invocation: 需要执行的方法8.fir">
-<meta property="og:updated_time" content="2020-02-13T18:31:54.397Z">
+<meta property="og:updated_time" content="2020-02-26T05:40:49.629Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="GCDTimer">
 <meta name="twitter:description" content="NSTimer相关参数介绍
@@ -185,7 +185,7 @@
 <li><code>initWithFireDate</code></li>
 </ul>
 <p>常用的应该是前俩种,<code>timerWithTimeInterval</code>和<code>initWithFireDate</code>需要手动加入到<code>runloop</code>中,而<code>scheduledTimerWithTimeInterval</code>会将定时器自定加入到当前的<code>runloop</code>,即<code>NSDefaultRunLoopMode</code></p>
-<h5 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h5><p>由于定时器会对使用对象(target)强引用,当界面对定时器强持有的时候,这时候会造成循环引用,比较常见的问题就是在即将要释放的<code>ViewController</code>不走它的<code>dealloc</code>方法,所以在<code>dealloc</code>方法中<code>[self.timer invalidate]</code>不会生效</p>
+<h5 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h5><p>由于定时器会对使用对象(target)强引用,当界面对定时器强持有的时候,这时候会造成循环引用,比较常见的问题就是在即将要释放的<code>ViewController</code>不走它的<code>dealloc</code>方法,所以在<code>dealloc</code>方法中<code>[self.timer invalidate]</code>不会生效<br><a id="more"></a></p>
 <h6 id="解决方式一"><a href="#解决方式一" class="headerlink" title="解决方式一"></a>解决方式一</h6><ul>
 <li>合适的位置销毁<code>timer</code>,<code>[self.timer invalidate]</code><h6 id="解决方式二"><a href="#解决方式二" class="headerlink" title="解决方式二"></a>解决方式二</h6></li>
 <li>利用<code>block</code>的特性,<code>__weak</code>打破循环</li>
