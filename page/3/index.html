@@ -156,6 +156,65 @@
       <div class="body-wrap">
         
   
+    <article id="post-Swift3-0学习-switch分支及For循环" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/06/06/Swift3-0学习-switch分支及For循环/">Swift3.0学习--switch分支及For循环</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="Switch"><a href="#Switch" class="headerlink" title="Switch"></a>Switch</h3><ul>
+<li>OC的switch<ul>
+<li>分支中变量只能是整数值</li>
+<li>每段语句必须有break</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> num;</div><div class="line">    <span class="keyword">switch</span> (num) &#123;</div><div class="line">        <span class="keyword">case</span> <span class="number">0</span>:</div><div class="line">            NSLog(@<span class="string">"输出0"</span>);</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">        <span class="keyword">case</span> <span class="number">1</span>:</div><div class="line">            NSLog(@<span class="string">"输出1"</span>);</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">        <span class="keyword">case</span> <span class="number">2</span>:</div><div class="line">            NSLog(@<span class="string">"输出2"</span>);</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">        <span class="keyword">default</span>:</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+        <p class="article-more-link">
+          <a class="article-more-a"  href="/2017/06/06/Swift3-0学习-switch分支及For循环/#more">more >></a>
+        </p>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2017/06/06/Swift3-0学习-switch分支及For循环/" class="archive-article-date">
+  	<time datetime="2017-06-06T02:00:13.000Z" itemprop="datePublished"><i class="icon-clock"></i>2017-06-06</time>
+</a>
+      
+      
+	<div class="article-category tagcloud">
+	<i class="icon-price-tags"></i>
+	<a class="article-category-link" href="/categories/Swift/">Swift</a>
+	</div>
+
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-Swift3-0学习-可选项" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -630,60 +689,6 @@
 	<div class="article-category tagcloud">
 	<i class="icon-price-tags"></i>
 	<a class="article-category-link" href="/categories/Swift/">Swift</a>
-	</div>
-
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-NSLog的调试技巧" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/28/NSLog的调试技巧/">NSLog的调试技巧</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h6 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h6><p>在开发中,难免会进行NSLog调试,但是我们知道NSLog非常耗性能,在程序发布的时候最好把NSLog都去掉,但是这样一来工程量比较大</p>
-<h6 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h6><p>1.<strong>项目中创建pch文件,将NSLog定义为宏</strong></p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 保证 #ifdef 中的宏定义只会在 OC 的代码中被引用</span></div><div class="line"><span class="comment">// 否则，一旦引入 C/C++ 的代码或者框架，就会出错！</span></div><div class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> __OBJC__</span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> DEBUG</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> NSLog(fmt, ...) NSLog((@<span class="meta-string">"%s [Line %d] "</span> fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)</span></div><div class="line"><span class="meta">#<span class="meta-keyword">else</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> NSLog(...)</span></div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></div></pre></td></tr></table></figure>
-        <p class="article-more-link">
-          <a class="article-more-a"  href="/2016/12/28/NSLog的调试技巧/#more">more >></a>
-        </p>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2016/12/28/NSLog的调试技巧/" class="archive-article-date">
-  	<time datetime="2016-12-28T01:44:45.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-12-28</time>
-</a>
-      
-      
-	<div class="article-category tagcloud">
-	<i class="icon-price-tags"></i>
-	<a class="article-category-link" href="/categories/OC/">OC</a>
 	</div>
 
 

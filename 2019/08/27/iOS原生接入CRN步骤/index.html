@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>iOS原生接入CRN步骤 | TuShiZhan_Blog|涂世展博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="一、安装ReactNative及code-push1.安装rn项目依赖
+新建文件夹foldername，在foldername下clone健客医院iOS项目及健客医院RN项目目录结构如下：
+
+命令行进入RN项目根目录，执行npm install，安装node依赖模块。
+2.安装iOS项目依赖
+进入iOS项目文件夹，编辑Podfile文件，添加RN及code-push依赖：
+12345678910">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS原生接入CRN步骤">
+<meta property="og:url" content="http://yoursite.com/2019/08/27/iOS原生接入CRN步骤/index.html">
+<meta property="og:site_name" content="TuShiZhan_Blog|涂世展博客">
+<meta property="og:description" content="一、安装ReactNative及code-push1.安装rn项目依赖
+新建文件夹foldername，在foldername下clone健客医院iOS项目及健客医院RN项目目录结构如下：
+
+命令行进入RN项目根目录，执行npm install，安装node依赖模块。
+2.安装iOS项目依赖
+进入iOS项目文件夹，编辑Podfile文件，添加RN及code-push依赖：
+12345678910">
+<meta property="og:image" content="https://s2.ax1x.com/2019/07/03/ZtMJP0.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/07/04/ZUeX6g.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/07/04/ZUMfZ4.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/07/03/ZtNsnP.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/07/03/ZtUXa8.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/07/03/Ztdj3Q.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/07/03/ZtDpDA.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/07/03/ZtrDwn.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/07/04/ZNhLY4.png">
+<meta property="og:updated_time" content="2020-02-26T18:06:06.571Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS原生接入CRN步骤">
+<meta name="twitter:description" content="一、安装ReactNative及code-push1.安装rn项目依赖
+新建文件夹foldername，在foldername下clone健客医院iOS项目及健客医院RN项目目录结构如下：
+
+命令行进入RN项目根目录，执行npm install，安装node依赖模块。
+2.安装iOS项目依赖
+进入iOS项目文件夹，编辑Podfile文件，添加RN及code-push依赖：
+12345678910">
+<meta name="twitter:image" content="https://s2.ax1x.com/2019/07/03/ZtMJP0.png">
+  
+    <link rel="alternative" href="/atom.xml" title="TuShiZhan_Blog|涂世展博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <script src="/style.js"></script>
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="http://upload.jianshu.io/users/upload_avatars/1944178/5c95d50c5d2c.gif?imageMogr/thumbnail/90x90/quality/100" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">涂世展</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">最怕你一生碌碌无为,还安慰自己平凡可贵</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+				<li><a href="/archives">概览</a></li>
+	        
+				<li><a href="/categories/OC">OC</a></li>
+	        
+				<li><a href="/categories/Other">其他</a></li>
+	        
+				<li><a href="/categories/Mac">Mac软件</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a class="js-smart-menu" data-idx="0" href="javascript:void(0)">所有文章</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="1" href="javascript:void(0)">标签</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="2" href="javascript:void(0)">友链</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="3" href="javascript:void(0)">关于我</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/tutu279737146" title="github">github</a>
+		        
+					<a class="weibo" target="_blank" href="http://weibo.com/5616393521/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1" title="weibo">weibo</a>
+		        
+					<a class="rss" target="_blank" href="#" title="rss">rss</a>
+		        
+					<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/tu-shi-zhan-8" title="zhihu">zhihu</a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-list"></i></div>
+  		<h1 class="header-author js-mobile-header hide">涂世展</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img src="http://upload.jianshu.io/users/upload_avatars/1944178/5c95d50c5d2c.gif?imageMogr/thumbnail/90x90/quality/100" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">涂世展</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">最怕你一生碌碌无为,还安慰自己平凡可贵</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">概览</a></li>
+		        
+					<li><a href="/categories/OC">OC</a></li>
+		        
+					<li><a href="/categories/Other">其他</a></li>
+		        
+					<li><a href="/categories/Mac">Mac软件</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/tutu279737146" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/5616393521/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="#" title="rss">rss</a>
+			        
+						<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/tu-shi-zhan-8" title="zhihu">zhihu</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap">
+        <article id="post-iOS原生接入CRN步骤" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      iOS原生接入CRN步骤
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<h2 id="一、安装ReactNative及code-push"><a href="#一、安装ReactNative及code-push" class="headerlink" title="一、安装ReactNative及code-push"></a>一、安装ReactNative及code-push</h2><p><strong>1.安装rn项目依赖</strong></p>
+<p>新建文件夹foldername，在foldername下clone健客医院iOS项目及健客医院RN项目目录结构如下：</p>
+<p><img src="https://s2.ax1x.com/2019/07/03/ZtMJP0.png" alt=""></p>
+<p>命令行进入RN项目根目录，执行npm install，安装node依赖模块。</p>
+<p><strong>2.安装iOS项目依赖</strong></p>
+<p>进入iOS项目文件夹，编辑Podfile文件，添加RN及code-push依赖：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"># RN相关</div><div class="line">    pod &apos;React&apos;, :path =&gt; &apos;../DoctorBonusPoints/node_modules/react-native&apos;, :subspecs =&gt; [</div><div class="line">        &apos;Core&apos;,</div><div class="line">        &apos;CxxBridge&apos;,</div><div class="line">        &apos;RCTImage&apos;,</div><div class="line">        &apos;DevSupport&apos;,</div><div class="line">        &apos;RCTText&apos;,</div><div class="line">        &apos;RCTNetwork&apos;,</div><div class="line">        &apos;RCTWebSocket&apos;,</div><div class="line">        &apos;RCTActionSheet&apos;,</div><div class="line">        &apos;RCTLinkingIOS&apos;,</div><div class="line">        &apos;RCTAnimation&apos;</div><div class="line">    ]</div><div class="line">    pod &apos;CodePush&apos;, :path =&gt; &apos;../DoctorBonusPoints/node_modules/react-native-code-push&apos;</div><div class="line">    pod &apos;RNGestureHandler&apos;, :path =&gt; &apos;../DoctorBonusPoints/node_modules/react-native-gesture-handler&apos;</div><div class="line">    pod &apos;yoga&apos;, :path =&gt; &apos;../DoctorBonusPoints/node_modules/react-native/ReactCommon/yoga&apos;</div><div class="line">    pod &apos;DoubleConversion&apos;, :podspec =&gt; &apos;../DoctorBonusPoints/node_modules/react-native/third-party-podspecs/DoubleConversion.podspec&apos;</div><div class="line">    pod &apos;glog&apos;, :podspec =&gt; &apos;../DoctorBonusPoints/node_modules/react-native/third-party-podspecs/glog.podspec&apos;</div><div class="line">    pod &apos;Folly&apos;, :podspec =&gt; &apos;../DoctorBonusPoints/node_modules/react-native/third-party-podspecs/Folly.podspec&apos;</div></pre></td></tr></table></figure>
+<p>打开命令行，在iOS项目根目录下执行pod install，安装成功后。打开iOS项目，手动删除Pods target下的Development Pods文件夹内的React文件夹，也就是删除刚刚安装的RN的依赖库。去github下载CRN开源项目，下载成功后解压，文件结构如下：</p>
+<p><img src="https://s2.ax1x.com/2019/07/04/ZUeX6g.png" alt=""><br><img src="https://s2.ax1x.com/2019/07/04/ZUMfZ4.png" alt=""></p>
+<p>将CRN文件夹和ReactNative文件夹拷贝到健客医院项目的JianKeDoctor目录下。打开健客医院iOS项目添加文件夹下子工程依赖如图所示：</p>
+<p><img src="https://s2.ax1x.com/2019/07/03/ZtNsnP.png" alt=""></p>
+<p>点击xode 左上角项目target，选择 edit scheme如图所示，点击build选项卡，点击加号添加React编译依赖，取消勾选parallelize选项，注意要把React放在最上边使之先编译。</p>
+<p><img src="https://s2.ax1x.com/2019/07/03/ZtUXa8.png" alt=""></p>
+<p>进入工程的buildphases添加library</p>
+<p><img src="https://s2.ax1x.com/2019/07/03/Ztdj3Q.png" alt=""></p>
+<p>点击build settings选项卡，找到Header Search Paths选项，添加搜索路径</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$&#123;SRCROOT&#125;</span>/JianKeDoctor/RNLib/ReactNative</div><div class="line"><span class="variable">$&#123;SRCROOT&#125;</span>/JianKeDoctor/CRN</div></pre></td></tr></table></figure>
+<p>搜索路径都设置为recursive，递归查找。</p>
+<p>到此安装工作结束。<a id="more"></a></p>
+<h2 id="二、RN项目打包"><a href="#二、RN项目打包" class="headerlink" title="二、RN项目打包"></a>二、RN项目打包</h2><p>打开命令行，输入 sudo npm install crn-cli -g ，全局安装CRN命令行工具。</p>
+<p>打开健客医院RN工程，编辑index.js文件，加入模块导出代码如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123;AppRegistry&#125; <span class="keyword">from</span> <span class="string">'react-native'</span>;</div><div class="line"><span class="keyword">import</span> &#123;name <span class="keyword">as</span> appName&#125; <span class="keyword">from</span> <span class="string">'./app.json'</span>;</div><div class="line"><span class="keyword">import</span> App <span class="keyword">from</span> <span class="string">'./src/App'</span></div><div class="line"></div><div class="line">AppRegistry.registerComponent(appName, () =&gt; App);</div><div class="line"></div><div class="line"><span class="comment">//勿删除，打包需要业务模块导出</span></div><div class="line"><span class="built_in">module</span>.exports = App;</div></pre></td></tr></table></figure>
+<p>在项目根目录下执行 crn-cli pack 进行打包，打包产物为publish文件夹下的内容，包目录结构如下：</p>
+<p><img src="https://s2.ax1x.com/2019/07/03/ZtDpDA.png" alt=""></p>
+<p>删除安卓平台包，将publish文件夹重命名为webapp，将webapp文件夹拷贝到健客医院iOS项目的JianKeDoctor文件夹内,在项目里add file，选择create folder reference，就是在工程里显示为蓝色文件夹如图：</p>
+<p><img src="https://s2.ax1x.com/2019/07/03/ZtrDwn.png" alt=""></p>
+<h2 id="三、使用规则"><a href="#三、使用规则" class="headerlink" title="三、使用规则"></a>三、使用规则</h2><p>在AppDelegate.m中引入JKCRNLauncher.h，项目启动时调用[JKCRNLauncher launch];，CRN初始化工作结束</p>
+<p>使用方式：</p>
+<p>引入JKCRNViewController.h头文件，在需要跳转的地方初始化并配置，示例代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">#import &quot;CRNURLHandler.h&quot;</div><div class="line">#import &quot;JKCRNViewController.h&quot;</div><div class="line">#import &lt;CodePush.h&gt;</div><div class="line"></div><div class="line">#import &quot;JKRNExceptionManager.h&quot;</div><div class="line"></div><div class="line">@interface JKMineController ()&lt;UITableViewDataSource,UITableViewDelegate,JKRNExceptionManagerDelegate&gt;</div><div class="line">@end</div><div class="line">- (void)viewDidLoad &#123;</div><div class="line">    [JKRNExceptionManager sharedManager].delegate = self;</div><div class="line">&#125;</div><div class="line">//js内部出错代理</div><div class="line">-(void)jsInternalExceptionHandler:(NSError *)jsError&#123;</div><div class="line">    [self goToNativeEvaluateVC];</div><div class="line">&#125;</div><div class="line">//js包加载失败代理</div><div class="line">-(void)jsBundleLoadFailedHandler:(NSDictionary *)info&#123;//js包加载失败</div><div class="line">    [self goToNativeEvaluateVC];</div><div class="line">&#125;</div><div class="line">-(void)goTOCRN&#123;</div><div class="line">#ifdef DEBUG</div><div class="line">        NSString * strUrl = @&quot;http://192.168.36.71:8081/index.bundle?CRNModuleName=CRNJiankeDoctor&amp;CRNType=1&amp;platform=ios&amp;dev=true&quot;;</div><div class="line">//////        NSString * strUrl = @&quot;http://192.168.36.71:8081/index.bundle?platform=ios&amp;dev=true&amp;CRNModuleName=jsts&amp;CRNType=1&quot;;</div><div class="line">#else</div><div class="line">        NSURL *jsCodeLocation = [CodePush bundleURL];</div><div class="line">        NSString *strUrl = [jsCodeLocation.absoluteString stringByAppendingString:@&quot;/rn_CRNJiankeDoctor/main.js?CRNModuleName=CRNJiankeDoctor&amp;CRNType=1&quot;];</div><div class="line">#endif</div><div class="line">        CRNURL *url = [[CRNURL alloc] initWithPath:strUrl];</div><div class="line">        JKCRNViewController *crnVC = [[JKCRNViewController alloc]initWithURL:url andInitialProperties:@&#123;@&quot;moduleName&quot;:@&quot;EvaluationDetails&quot;,@&quot;nativeInfo&quot;:[NativeInfoGetter getNativeInfoJson]&#125;];</div><div class="line">        crnVC.title = url.rnTitle;</div><div class="line">        [self.navigationController pushViewController:crnVC animated:YES];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="四、code-push使用"><a href="#四、code-push使用" class="headerlink" title="四、code-push使用"></a>四、code-push使用</h2><p><strong>服务环境配置</strong></p>
+<p>正式环境用   <a href="https://bj-client.jianke.com/codePush/" target="_blank" rel="external">https://bj-client.jianke.com/codePush/</a>    Production</p>
+<p>预发布环境用  <a href="https://bj-client.jianke.com/codePush/" target="_blank" rel="external">https://bj-client.jianke.com/codePush/</a>  Staging</p>
+<p>其他用   <a href="http://192.168.36.143:3000" target="_blank" rel="external">http://192.168.36.143:3000</a>   Staging</p>
+<p><strong>iOS端代码推送</strong></p>
+<p>将RN项目打包产物剔除平台相关代码后，目录结构如图所示：</p>
+<p><img src="https://s2.ax1x.com/2019/07/04/ZNhLY4.png" alt=""></p>
+<p>发布代码命令如下：</p>
+<figure class="highlight brainfuck"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="comment">code</span><span class="literal">-</span><span class="comment">push</span> <span class="comment">release</span> <span class="comment">JiankeDoctor</span><span class="literal">-</span><span class="comment">iOS</span> <span class="string">.</span><span class="comment">/webapp</span> <span class="comment">1</span><span class="string">.</span><span class="comment">0</span><span class="string">.</span><span class="comment">0</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">deploymentName</span> <span class="comment">Staging</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">m</span> <span class="comment">false</span></div></pre></td></tr></table></figure>
+<p>JiankeDoctor-iOS为code-push项目名称，./webapp为发布的代码目录，1.0.0为iOS项目内，info.plist 中CodePushVersion字段对应值，–m 参数为是否强制更新。</p>
+<p><strong>注意</strong>❗️</p>
+<p>对于不同环境的code-push配置，要注意修改infoplist文件的CodePushServerURL和CodePushDeploymentKey的值，以及CodePushVersion的</p>
+<p><strong>key值</strong><br>Production: tGGtLkVShHGHGlAStMXCBaw2ofvb4ksvOXqog</p>
+<p>Staging: lb2YGzqszSd5TiVm78ZAKhLLF5Jh4ksvOXqog</p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2019/08/27/iOS原生接入CRN步骤/" class="archive-article-date">
+  	<time datetime="2019-08-26T18:01:48.000Z" itemprop="datePublished"><i class="icon-clock"></i>2019-08-27</time>
+</a>
+      
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2019/02/14/GCDTimer/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">GCDTimer</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+<div class="share_jia">
+<!-- JiaThis Button BEGIN -->
+<div class="jiathis_style_32x32">
+	<a class="jiathis_button_qzone"></a>
+	<a class="jiathis_button_tsina"></a>
+	<a class="jiathis_button_tqq"></a>
+	<a class="jiathis_button_weixin"></a>
+	<a class="jiathis_button_renren"></a>
+	<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="iOS原生接入CRN步骤" data-title="iOS原生接入CRN步骤" data-url="http://yoursite.com/2019/08/27/iOS原生接入CRN步骤/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"tushizhan"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2020 涂世展
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/",
+		innerArchive: true
+	}
+</script>
+
+<script src="/./main.js"></script>
+
+
+    
+<div class="tools-col">
+  <ul class="btn-wrap">
+    
+      <li class="chose" data-hook="tools-section-all"><span class="text">全部</span><i class="icon-book"></i></li>
+    
+    
+      <li data-hook="tools-section-tag"><span class="text">标签</span><i class="icon-price-tags"></i></li>
+    
+    
+      <li data-hook="tools-section-friends"><span class="text">友链</span><i class="icon-link"></i></li>
+    
+    
+      <li data-hook="tools-section-me"><span class="text">我</span><i class="icon-smile"></i></li>
+    
+  </ul>
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all chose">
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-tag">
+    			<div class="widget tagcloud" id="js-tagcloud">
+    				
+    			</div>
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-friends">
+  		
+  			<div class="friends-wrap" id="js-friends">
+  			
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/tutu279737146">我的github</a>
+  	        
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="http://weibo.com/5616393521/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1">我的微博</a>
+  	        
+  	        </div>
+  		
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-me">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">这个人很帅&lt;br&gt;他什么都不想说&lt;br&gt;</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>

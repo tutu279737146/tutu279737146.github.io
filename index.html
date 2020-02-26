@@ -156,6 +156,72 @@
       <div class="body-wrap">
         
   
+    <article id="post-iOS原生接入CRN步骤" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/27/iOS原生接入CRN步骤/">iOS原生接入CRN步骤</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<h2 id="一、安装ReactNative及code-push"><a href="#一、安装ReactNative及code-push" class="headerlink" title="一、安装ReactNative及code-push"></a>一、安装ReactNative及code-push</h2><p><strong>1.安装rn项目依赖</strong></p>
+<p>新建文件夹foldername，在foldername下clone健客医院iOS项目及健客医院RN项目目录结构如下：</p>
+<p><img src="https://s2.ax1x.com/2019/07/03/ZtMJP0.png" alt=""></p>
+<p>命令行进入RN项目根目录，执行npm install，安装node依赖模块。</p>
+<p><strong>2.安装iOS项目依赖</strong></p>
+<p>进入iOS项目文件夹，编辑Podfile文件，添加RN及code-push依赖：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"># RN相关</div><div class="line">    pod &apos;React&apos;, :path =&gt; &apos;../DoctorBonusPoints/node_modules/react-native&apos;, :subspecs =&gt; [</div><div class="line">        &apos;Core&apos;,</div><div class="line">        &apos;CxxBridge&apos;,</div><div class="line">        &apos;RCTImage&apos;,</div><div class="line">        &apos;DevSupport&apos;,</div><div class="line">        &apos;RCTText&apos;,</div><div class="line">        &apos;RCTNetwork&apos;,</div><div class="line">        &apos;RCTWebSocket&apos;,</div><div class="line">        &apos;RCTActionSheet&apos;,</div><div class="line">        &apos;RCTLinkingIOS&apos;,</div><div class="line">        &apos;RCTAnimation&apos;</div><div class="line">    ]</div><div class="line">    pod &apos;CodePush&apos;, :path =&gt; &apos;../DoctorBonusPoints/node_modules/react-native-code-push&apos;</div><div class="line">    pod &apos;RNGestureHandler&apos;, :path =&gt; &apos;../DoctorBonusPoints/node_modules/react-native-gesture-handler&apos;</div><div class="line">    pod &apos;yoga&apos;, :path =&gt; &apos;../DoctorBonusPoints/node_modules/react-native/ReactCommon/yoga&apos;</div><div class="line">    pod &apos;DoubleConversion&apos;, :podspec =&gt; &apos;../DoctorBonusPoints/node_modules/react-native/third-party-podspecs/DoubleConversion.podspec&apos;</div><div class="line">    pod &apos;glog&apos;, :podspec =&gt; &apos;../DoctorBonusPoints/node_modules/react-native/third-party-podspecs/glog.podspec&apos;</div><div class="line">    pod &apos;Folly&apos;, :podspec =&gt; &apos;../DoctorBonusPoints/node_modules/react-native/third-party-podspecs/Folly.podspec&apos;</div></pre></td></tr></table></figure>
+<p>打开命令行，在iOS项目根目录下执行pod install，安装成功后。打开iOS项目，手动删除Pods target下的Development Pods文件夹内的React文件夹，也就是删除刚刚安装的RN的依赖库。去github下载CRN开源项目，下载成功后解压，文件结构如下：</p>
+<p><img src="https://s2.ax1x.com/2019/07/04/ZUeX6g.png" alt=""><br><img src="https://s2.ax1x.com/2019/07/04/ZUMfZ4.png" alt=""></p>
+<p>将CRN文件夹和ReactNative文件夹拷贝到健客医院项目的JianKeDoctor目录下。打开健客医院iOS项目添加文件夹下子工程依赖如图所示：</p>
+<p><img src="https://s2.ax1x.com/2019/07/03/ZtNsnP.png" alt=""></p>
+<p>点击xode 左上角项目target，选择 edit scheme如图所示，点击build选项卡，点击加号添加React编译依赖，取消勾选parallelize选项，注意要把React放在最上边使之先编译。</p>
+<p><img src="https://s2.ax1x.com/2019/07/03/ZtUXa8.png" alt=""></p>
+<p>进入工程的buildphases添加library</p>
+<p><img src="https://s2.ax1x.com/2019/07/03/Ztdj3Q.png" alt=""></p>
+<p>点击build settings选项卡，找到Header Search Paths选项，添加搜索路径</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$&#123;SRCROOT&#125;</span>/JianKeDoctor/RNLib/ReactNative</div><div class="line"><span class="variable">$&#123;SRCROOT&#125;</span>/JianKeDoctor/CRN</div></pre></td></tr></table></figure>
+<p>搜索路径都设置为recursive，递归查找。</p>
+<p>到此安装工作结束。
+        <p class="article-more-link">
+          <a class="article-more-a"  href="/2019/08/27/iOS原生接入CRN步骤/#more">more >></a>
+        </p>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2019/08/27/iOS原生接入CRN步骤/" class="archive-article-date">
+  	<time datetime="2019-08-26T18:01:48.000Z" itemprop="datePublished"><i class="icon-clock"></i>2019-08-27</time>
+</a>
+      
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-GCDTimer" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -722,77 +788,6 @@
       
       <a href="/2018/01/04/iOS核心动画技巧学习-CALayer常用属性/" class="archive-article-date">
   	<time datetime="2018-01-04T03:06:16.000Z" itemprop="datePublished"><i class="icon-clock"></i>2018-01-04</time>
-</a>
-      
-      
-	<div class="article-category tagcloud">
-	<i class="icon-price-tags"></i>
-	<a class="article-category-link" href="/categories/OC/">OC</a>
-	</div>
-
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-iOS核心动画技巧学习-CALayer的历史追溯" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/01/03/iOS核心动画技巧学习-CALayer的历史追溯/">iOS核心动画技巧学习 -- CALayer的历史追溯</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ul>
-<li>异同<ul>
-<li>UIView负责用来处理和用户的交互</li>
-<li>CALayer负责真正的在屏幕上显示和做动画 </li>
-</ul>
-</li>
-<li>关联(平行的层级关系)<ul>
-<li>一个视图只有一个相关联的图层,初始化视图的时候自动创建,暂且叫为根图层,视图的职责就是创建并且管理这个图层</li>
-<li>但是我们也可以自己创建单独的图层,来添加为某个视图相关联的跟图层的字图层,如图所示</li>
-<li><img src="http://oxn0lcico.bkt.clouddn.com/Snip20180103_2.png" alt=""></li>
-<li>Mac OS平台10.8之前,一个显著的性能缺陷就是用了视图层级而不是单独在一个视图里面使用<code>CALyer</code>树状层级;10.8之后 <code>NSView</code>性能得到了大幅度提高</li>
-<li>IOS平台,作为比较轻量级的<code>UIView</code>并没有显著的性能影响</li>
-<li>视图层级优点:可以在使用所有的<code>CALayer</code>底层特性同时,也可以同时使用<code>UIView</code>的高级API(自动排版,布局和事件处理)</li>
-<li><code>CALayer</code>优点:开发同时可以在Mac OS上运行的跨平台应用,使用多种<code>CALayer</code>的子集</li>
-</ul>
-</li>
-<li>原因(职责分离)<ul>
-<li>为什么不用一个简单的层级来处理所有的事情,而是需要基于<code>UIView</code>和<code>CALayer</code>提供俩个平行的层级关系</li>
-<li>iOS和Mac OS俩个平台上,事件和用户交互方面:基于多点触控的用户界面和基于鼠标键盘有着本质的区别 ,这既是为什么iOS有UIKit和UIView,Mac OS有AppKit和NSView,这样俩个平台就能共享Core Animation框架,共享代码,使得开发更加便捷 </li>
-</ul>
-</li>
-</ul>
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2018/01/03/iOS核心动画技巧学习-CALayer的历史追溯/" class="archive-article-date">
-  	<time datetime="2018-01-03T07:01:12.000Z" itemprop="datePublished"><i class="icon-clock"></i>2018-01-03</time>
 </a>
       
       

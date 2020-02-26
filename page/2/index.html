@@ -156,6 +156,77 @@
       <div class="body-wrap">
         
   
+    <article id="post-iOS核心动画技巧学习-CALayer的历史追溯" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/01/03/iOS核心动画技巧学习-CALayer的历史追溯/">iOS核心动画技巧学习 -- CALayer的历史追溯</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li>异同<ul>
+<li>UIView负责用来处理和用户的交互</li>
+<li>CALayer负责真正的在屏幕上显示和做动画 </li>
+</ul>
+</li>
+<li>关联(平行的层级关系)<ul>
+<li>一个视图只有一个相关联的图层,初始化视图的时候自动创建,暂且叫为根图层,视图的职责就是创建并且管理这个图层</li>
+<li>但是我们也可以自己创建单独的图层,来添加为某个视图相关联的跟图层的字图层,如图所示</li>
+<li><img src="http://oxn0lcico.bkt.clouddn.com/Snip20180103_2.png" alt=""></li>
+<li>Mac OS平台10.8之前,一个显著的性能缺陷就是用了视图层级而不是单独在一个视图里面使用<code>CALyer</code>树状层级;10.8之后 <code>NSView</code>性能得到了大幅度提高</li>
+<li>IOS平台,作为比较轻量级的<code>UIView</code>并没有显著的性能影响</li>
+<li>视图层级优点:可以在使用所有的<code>CALayer</code>底层特性同时,也可以同时使用<code>UIView</code>的高级API(自动排版,布局和事件处理)</li>
+<li><code>CALayer</code>优点:开发同时可以在Mac OS上运行的跨平台应用,使用多种<code>CALayer</code>的子集</li>
+</ul>
+</li>
+<li>原因(职责分离)<ul>
+<li>为什么不用一个简单的层级来处理所有的事情,而是需要基于<code>UIView</code>和<code>CALayer</code>提供俩个平行的层级关系</li>
+<li>iOS和Mac OS俩个平台上,事件和用户交互方面:基于多点触控的用户界面和基于鼠标键盘有着本质的区别 ,这既是为什么iOS有UIKit和UIView,Mac OS有AppKit和NSView,这样俩个平台就能共享Core Animation框架,共享代码,使得开发更加便捷 </li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2018/01/03/iOS核心动画技巧学习-CALayer的历史追溯/" class="archive-article-date">
+  	<time datetime="2018-01-03T07:01:12.000Z" itemprop="datePublished"><i class="icon-clock"></i>2018-01-03</time>
+</a>
+      
+      
+	<div class="article-category tagcloud">
+	<i class="icon-price-tags"></i>
+	<a class="article-category-link" href="/categories/OC/">OC</a>
+	</div>
+
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-终端提交代码到github" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -687,65 +758,6 @@
       
       <a href="/2017/06/06/Swift3-0学习-字符串/" class="archive-article-date">
   	<time datetime="2017-06-06T02:21:24.000Z" itemprop="datePublished"><i class="icon-clock"></i>2017-06-06</time>
-</a>
-      
-      
-	<div class="article-category tagcloud">
-	<i class="icon-price-tags"></i>
-	<a class="article-category-link" href="/categories/Swift/">Swift</a>
-	</div>
-
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Swift3-0学习-switch分支及For循环" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/06/Swift3-0学习-switch分支及For循环/">Swift3.0学习--switch分支及For循环</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="Switch"><a href="#Switch" class="headerlink" title="Switch"></a>Switch</h3><ul>
-<li>OC的switch<ul>
-<li>分支中变量只能是整数值</li>
-<li>每段语句必须有break</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> num;</div><div class="line">    <span class="keyword">switch</span> (num) &#123;</div><div class="line">        <span class="keyword">case</span> <span class="number">0</span>:</div><div class="line">            NSLog(@<span class="string">"输出0"</span>);</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">        <span class="keyword">case</span> <span class="number">1</span>:</div><div class="line">            NSLog(@<span class="string">"输出1"</span>);</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">        <span class="keyword">case</span> <span class="number">2</span>:</div><div class="line">            NSLog(@<span class="string">"输出2"</span>);</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">        <span class="keyword">default</span>:</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
-        <p class="article-more-link">
-          <a class="article-more-a"  href="/2017/06/06/Swift3-0学习-switch分支及For循环/#more">more >></a>
-        </p>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2017/06/06/Swift3-0学习-switch分支及For循环/" class="archive-article-date">
-  	<time datetime="2017-06-06T02:00:13.000Z" itemprop="datePublished"><i class="icon-clock"></i>2017-06-06</time>
 </a>
       
       
